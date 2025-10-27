@@ -1,3 +1,7 @@
+-- Peace Pledge Database Schema
+-- Version: 1.0 (Production)
+-- Description: Complete database schema for the Peace Pledge application
+
 -- Create database
 CREATE DATABASE IF NOT EXISTS peace_pledge;
 
