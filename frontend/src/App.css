@@ -1,0 +1,126 @@
+/* Tailwind-inspired utility classes */
+
+/* gradient mesh background */
+.mesh {
+  position: relative;
+}
+
+.mesh:before,
+.mesh:after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  filter: blur(60px);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.mesh:before {
+  top: -80px;
+  left: -40px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(closest-side, #60a5fa, transparent 70%);
+}
+
+.mesh:after {
+  right: -60px;
+  bottom: -120px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(closest-side, #f59e0b, transparent 70%);
+}
+
+/* Certificate styles */
+.certificate-template {
+  width: 800px;
+  height: 600px;
+  background: white;
+  position: relative;
+  font-family: 'Georgia', serif;
+}
+
+.certificate-border {
+  border: 10px solid;
+  border-image: linear-gradient(45deg, #3b82f6, #10b981, #3b82f6) 1;
+  margin: 20px;
+  padding: 40px;
+  height: calc(100% - 40px);
+  box-sizing: border-box;
+}
+
+.signature-pad {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.shadimg {
+  border-radius: 20px;
+  box-shadow: 4px 4px 49px 0 #090353;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-align {
+    text-align: center;
+  }
+}
+
+/* Float animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Spin slow animation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 6s linear infinite;
+}
+
+/* Background mask */
+.bg_mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg_mask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(59, 130, 246, 0.6);
+}
