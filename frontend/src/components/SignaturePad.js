@@ -92,17 +92,31 @@ const SignaturePad = ({ onSignatureChange, clearTrigger }) => {
         img.onload = () => {
           const canvas = canvasRef.current;
           const ctx = canvas.getContext("2d");
+          const rect = canvas.getBoundingClientRect();
+
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.fillStyle = "white";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-          const scale = Math.min(
-            canvas.width / img.width,
-            canvas.height / img.height
-          );
-          const x = canvas.width / 2 - (img.width / 2) * scale;
-          const y = canvas.height / 2 - (img.height / 2) * scale;
-          ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+          // Calculate dimensions to maintain aspect ratio
+          // Use 80% of canvas to leave some padding
+          const maxWidth = rect.width * 0.8;
+          const maxHeight = rect.height * 0.8;
+          const imgAspectRatio = img.width / img.height;
+
+          let drawWidth = maxWidth;
+          let drawHeight = maxWidth / imgAspectRatio;
+
+          if (drawHeight > maxHeight) {
+            drawHeight = maxHeight;
+            drawWidth = maxHeight * imgAspectRatio;
+          }
+
+          // Center the image on canvas
+          const x = (rect.width - drawWidth) / 2;
+          const y = (rect.height - drawHeight) / 2;
+
+          ctx.drawImage(img, x, y, drawWidth, drawHeight);
 
           setHasSignature(true);
           const signatureData = canvas.toDataURL("image/png");

@@ -201,8 +201,31 @@ const generateCertificate = async (pledgeData) => {
         const signatureBuffer = Buffer.from(base64Data, "base64");
         const signatureImg = await loadImage(signatureBuffer);
 
-        // Draw signature on right side
-        ctx.drawImage(signatureImg, 580, 455, 140, 70);
+        // Calculate signature dimensions maintaining aspect ratio
+        const maxWidth = 140;
+        const maxHeight = 70;
+        const imgAspectRatio = signatureImg.width / signatureImg.height;
+
+        let drawWidth = maxWidth;
+        let drawHeight = maxWidth / imgAspectRatio;
+
+        if (drawHeight > maxHeight) {
+          drawHeight = maxHeight;
+          drawWidth = maxHeight * imgAspectRatio;
+        }
+
+        // Center the signature in the allocated space
+        const signatureX = 650 - drawWidth / 2;
+        const signatureY = 490 - drawHeight / 2;
+
+        // Draw signature on right side with proper dimensions
+        ctx.drawImage(
+          signatureImg,
+          signatureX,
+          signatureY,
+          drawWidth,
+          drawHeight
+        );
       } catch (err) {
         console.error("Error loading signature:", err);
       }

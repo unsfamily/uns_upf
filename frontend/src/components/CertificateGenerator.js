@@ -148,8 +148,31 @@ const CertificateGenerator = ({ pledgeData, onDownloadComplete }) => {
         if (pledgeData.signature) {
           const signatureImg = new Image();
           signatureImg.onload = function () {
-            // Draw signature on left side
-            ctx.drawImage(signatureImg, 100, 420, 140, 70);
+            // Calculate signature dimensions maintaining aspect ratio
+            const maxWidth = 140;
+            const maxHeight = 70;
+            const imgAspectRatio = signatureImg.width / signatureImg.height;
+
+            let drawWidth = maxWidth;
+            let drawHeight = maxWidth / imgAspectRatio;
+
+            if (drawHeight > maxHeight) {
+              drawHeight = maxHeight;
+              drawWidth = maxHeight * imgAspectRatio;
+            }
+
+            // Center the signature in the allocated space (left side)
+            const signatureX = 170 - drawWidth / 2;
+            const signatureY = 455 - drawHeight / 2;
+
+            // Draw signature on left side with proper dimensions
+            ctx.drawImage(
+              signatureImg,
+              signatureX,
+              signatureY,
+              drawWidth,
+              drawHeight
+            );
 
             // Signature line and label for user - left side
             ctx.strokeStyle = "#cbd5e1";
