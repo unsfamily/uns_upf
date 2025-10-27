@@ -7,43 +7,49 @@ const PledgeQuote = () => {
       style={{
         position: "relative",
         overflow: "hidden",
-        padding: "3.5rem 0",
+        padding: "4rem 1.5rem",
+        minHeight: "400px",
       }}
     >
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          zIndex: -1,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+          backgroundImage: `url(${peaceImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 1,
         }}
-      >
-        <div
-          style={{
-            height: "100%",
-            background: "linear-gradient(to right, #eff6ff, #f0fdf4)",
-          }}
-        >
-          <img
-            src={peaceImg}
-            alt="Peace"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              opacity: 0.3,
-            }}
-          />
-        </div>
-      </div>
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 1,
+          background:
+            "linear-gradient(135deg, rgba(239, 246, 255, 0.85), rgba(240, 253, 244, 0.85), rgba(239, 246, 255, 0.85))",
+        }}
+      />
       <div
         className="container"
         style={{
-          maxWidth: "48rem",
+          position: "relative",
+          zIndex: 2,
+          maxWidth: "52rem",
           margin: "0 auto",
           textAlign: "center",
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          padding: "1rem",
-          borderRadius: "0.5rem",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          padding: "2.5rem 2rem",
+          borderRadius: "1rem",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
         }}
       >
         <h3
@@ -52,6 +58,7 @@ const PledgeQuote = () => {
             fontWeight: "700",
             color: "#374151",
             textAlign: "center",
+            marginBottom: "1.5rem",
           }}
         >
           The Global Peace Pledge
@@ -59,9 +66,10 @@ const PledgeQuote = () => {
         <p
           style={{
             marginTop: "1.25rem",
-            fontSize: "1.125rem",
+            fontSize: "1.25rem",
             textAlign: "center",
             color: "#374151",
+            lineHeight: "1.8",
           }}
         >
           I add my voice and my signature to the global call for{" "}
@@ -78,9 +86,10 @@ const PledgeQuote = () => {
         </p>
         <p
           style={{
-            marginTop: "0.75rem",
-            fontSize: "1rem",
+            marginTop: "1rem",
+            fontSize: "1.125rem",
             color: "#374151",
+            lineHeight: "1.8",
           }}
         >
           I believe a{" "}
@@ -92,8 +101,8 @@ const PledgeQuote = () => {
         </p>
         <p
           style={{
-            marginTop: "1rem",
-            fontSize: "0.875rem",
+            marginTop: "1.5rem",
+            fontSize: "0.95rem",
             color: "#6b7280",
             fontStyle: "italic",
           }}
@@ -104,7 +113,10 @@ const PledgeQuote = () => {
       <style jsx>{`
         @media (min-width: 768px) {
           h3 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
+          }
+          p:first-of-type {
+            font-size: 1.375rem !important;
           }
         }
       `}</style>

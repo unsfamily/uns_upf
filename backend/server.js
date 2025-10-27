@@ -120,7 +120,7 @@ app.get("/api/health", (req, res) => {
 app.get("/api/admin/pledges", adminAuth, async (req, res) => {
   try {
     const [rows] = await promisePool.query(
-      "SELECT id, first_name, last_name, email, country, address, created_at FROM pledges ORDER BY created_at DESC"
+      "SELECT id, first_name, last_name, mobile, email, country, address, created_at FROM pledges ORDER BY created_at DESC"
     );
     res.json({ success: true, data: rows });
   } catch (error) {
@@ -197,7 +197,7 @@ app.post(
 app.get("/api/admin/pledges/export", adminAuth, async (req, res) => {
   try {
     const [rows] = await promisePool.query(
-      "SELECT id, first_name, last_name, email, country, address, created_at FROM pledges ORDER BY created_at DESC"
+      "SELECT id, first_name, last_name, mobile, email, country, address, created_at FROM pledges ORDER BY created_at DESC"
     );
 
     // Create a new workbook and worksheet
@@ -209,6 +209,7 @@ app.get("/api/admin/pledges/export", adminAuth, async (req, res) => {
       { header: "ID", key: "id", width: 10 },
       { header: "First Name", key: "first_name", width: 20 },
       { header: "Last Name", key: "last_name", width: 20 },
+      { header: "Mobile", key: "mobile", width: 20 },
       { header: "Email", key: "email", width: 30 },
       { header: "Country", key: "country", width: 20 },
       { header: "Address", key: "address", width: 40 },
@@ -221,6 +222,7 @@ app.get("/api/admin/pledges/export", adminAuth, async (req, res) => {
         id: row.id,
         first_name: row.first_name,
         last_name: row.last_name,
+        mobile: row.mobile || "",
         email: row.email,
         country: row.country,
         address: row.address || "",
@@ -278,6 +280,7 @@ app.post(
   [
     body("firstName").trim().notEmpty().withMessage("First name is required"),
     body("lastName").trim().notEmpty().withMessage("Last name is required"),
+    body("mobile").optional().trim(),
     body("email")
       .isEmail()
       .normalizeEmail()
@@ -297,7 +300,7 @@ app.post(
       });
     }
 
-    const { firstName, lastName, email, country, address, signature } =
+    const { firstName, lastName, mobile, email, country, address, signature } =
       req.body;
 
     try {
@@ -316,8 +319,16 @@ app.post(
 
       // Insert pledge into database
       const [result] = await promisePool.query(
-        "INSERT INTO pledges (first_name, last_name, email, country, address, signature, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())",
-        [firstName, lastName, email, country, address || null, signature]
+        "INSERT INTO pledges (first_name, last_name, mobile, email, country, address, signature, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())",
+        [
+          firstName,
+          lastName,
+          mobile || null,
+          email,
+          country,
+          address || null,
+          signature,
+        ]
       );
 
       console.log(
@@ -365,7 +376,7 @@ app.get("/api/pledge/:id", async (req, res) => {
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT id, first_name, last_name, email, country, address, created_at FROM pledges WHERE id = ?",
+      "SELECT id, first_name, last_name, mobile, email, country, address, created_at FROM pledges WHERE id = ?",
       [id]
     );
 

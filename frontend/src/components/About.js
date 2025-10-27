@@ -1,5 +1,5 @@
 import React from "react";
-import gmahanImg from "../assets/gmahan.jpg";
+import gmahanImg from "../assets/ggmahan.png";
 
 const About = () => {
   return (
@@ -13,34 +13,40 @@ const About = () => {
       }}
     >
       <div
+        className="about-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr",
-          gap: "2.5rem",
-          alignItems: "center",
+          gap: "3rem",
+          alignItems: "start",
         }}
       >
-        <div style={{ position: "relative", textAlign: "center" }}>
+        <div
+          className="about-image"
+          style={{ position: "relative", textAlign: "center" }}
+        >
           <img
             src={gmahanImg}
             alt="Gurumahan portrait"
             style={{
-              height: "14rem",
-              width: "14rem",
-              borderRadius: "50%",
+              height: "auto",
+              width: "100%",
+              maxWidth: "350px",
+              borderRadius: "20px",
               objectFit: "cover",
               margin: "0 auto",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
+              display: "block",
             }}
           />
           <div
             style={{
               position: "absolute",
               left: "50%",
-              transform: "translateX(-50%)",
               top: "50%",
               transform: "translate(-50%, -50%)",
-              height: "18rem",
-              width: "18rem",
+              height: "20rem",
+              width: "20rem",
               borderRadius: "50%",
               background: "rgba(191, 219, 254, 0.4)",
               filter: "blur(40px)",
@@ -50,7 +56,7 @@ const About = () => {
           ></div>
           <p
             style={{
-              marginTop: "0.75rem",
+              marginTop: "1rem",
               fontSize: "0.875rem",
               color: "#6b7280",
               fontStyle: "italic",
@@ -77,7 +83,7 @@ const About = () => {
             <p
               style={{ color: "#1e3a8a", fontWeight: "600", marginTop: "1rem" }}
             >
-              Global Peace Ambassador of the Universal Peace Foundation
+              Founder & Spiritual Leader of the Universal Peace Foundation
             </p>
           </div>
           <p
@@ -123,36 +129,47 @@ const About = () => {
               }}
             >
               "Peace is not merely the absence of conflict, but the presence of
-              harmony in every heart."
+              love, understanding, and compassion in every heart. When we unite
+              in the spirit of universal brotherhood, we become instruments of
+              divine harmony."
+              <footer
+                style={{
+                  marginTop: "0.5rem",
+                  fontSize: "0.95rem",
+                  color: "#6b7280",
+                }}
+              >
+                — His Holiness Gurumahan
+              </footer>
             </blockquote>
           </figure>
         </div>
       </div>
       <style jsx>{`
-        @media (min-width: 1024px) {
-          section > div {
-            grid-template-columns: repeat(12, 1fr);
-          }
-          section > div > div:first-child {
-            grid-column: span 4;
-          }
-          section > div > div:last-child {
-            grid-column: span 8;
-          }
-          section > div > div:first-child {
-            text-align: left;
-          }
-          section > div > div:first-child img {
-            margin: 0;
-          }
-        }
         @media (min-width: 768px) {
           h2 {
             font-size: 2.5rem !important;
           }
-          section > div > div:first-child img {
-            height: 16rem !important;
-            width: 16rem !important;
+          .about-image img {
+            max-width: 400px !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .about-grid {
+            grid-template-columns: 380px 1fr !important;
+            gap: 4rem !important;
+            align-items: start !important;
+          }
+          .about-image {
+            text-align: left !important;
+            position: sticky !important;
+            top: 100px !important;
+          }
+          .about-image img {
+            margin: 0 !important;
+          }
+          .header-align {
+            text-align: left !important;
           }
         }
       `}</style>

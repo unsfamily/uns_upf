@@ -7,14 +7,11 @@ import PledgeQuote from "../components/PledgeQuote";
 import PledgeForm from "../components/PledgeForm";
 import CertificatePreview from "../components/CertificatePreview";
 import CertificateGenerator from "../components/CertificateGenerator";
+import AboutFoundation from "../components/AboutFoundation";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
   const [pledgeData, setPledgeData] = useState(null);
-  const [previewName, setPreviewName] = useState({
-    firstName: "",
-    lastName: "",
-  });
 
   const handlePledgeSubmit = (data) => {
     setPledgeData(data);
@@ -28,10 +25,6 @@ const HomePage = () => {
         });
       }
     }, 100);
-  };
-
-  const handleFormChange = (firstName, lastName) => {
-    setPreviewName({ firstName, lastName });
   };
 
   return (
@@ -51,11 +44,12 @@ const HomePage = () => {
       <PledgeQuote />
       <PledgeForm onPledgeSubmit={handlePledgeSubmit} />
       <CertificatePreview
-        firstName={pledgeData?.firstName || previewName.firstName}
-        lastName={pledgeData?.lastName || previewName.lastName}
+        firstName={pledgeData?.firstName || ""}
+        lastName={pledgeData?.lastName || ""}
       />
       {pledgeData && (
         <div
+          id="certificateButtons"
           style={{
             textAlign: "center",
             marginTop: "2rem",
@@ -65,6 +59,7 @@ const HomePage = () => {
           <CertificateGenerator pledgeData={pledgeData} />
         </div>
       )}
+      <AboutFoundation />
       <Footer />
     </div>
   );

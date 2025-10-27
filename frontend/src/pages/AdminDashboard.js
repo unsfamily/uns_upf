@@ -262,6 +262,7 @@ const AdminDashboard = () => {
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Mobile</th>
                     <th>Email</th>
                     <th>Country</th>
                     <th>Address</th>
@@ -271,7 +272,7 @@ const AdminDashboard = () => {
                 <tbody>
                   {pledges.length === 0 ? (
                     <tr>
-                      <td colSpan="7" style={{ textAlign: "center" }}>
+                      <td colSpan="8" style={{ textAlign: "center" }}>
                         No pledges found
                       </td>
                     </tr>
@@ -281,6 +282,7 @@ const AdminDashboard = () => {
                         <td>{pledge.id}</td>
                         <td>{pledge.first_name}</td>
                         <td>{pledge.last_name}</td>
+                        <td>{pledge.mobile || "N/A"}</td>
                         <td>{pledge.email}</td>
                         <td>{pledge.country}</td>
                         <td>{pledge.address || "N/A"}</td>

@@ -201,6 +201,7 @@ const PledgeForm = ({ onPledgeSubmit }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    mobile: "",
     email: "",
     country: "",
     address: "",
@@ -286,6 +287,7 @@ const PledgeForm = ({ onPledgeSubmit }) => {
         setFormData({
           firstName: "",
           lastName: "",
+          mobile: "",
           email: "",
           country: "",
           address: "",
@@ -452,6 +454,44 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                   }}
                 />
               </div>
+            </div>
+
+            {/* Mobile Number (Optional) */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.5rem",
+              }}
+            >
+              <label
+                htmlFor="mobile"
+                style={{
+                  fontSize: "0.875rem",
+                  fontWeight: "600",
+                  color: "#374151",
+                }}
+              >
+                Mobile Number{" "}
+                <span style={{ color: "#6b7280", fontWeight: "400" }}>
+                  (Optional)
+                </span>
+              </label>
+              <input
+                type="tel"
+                id="mobile"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="Enter your mobile number"
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "1px solid #d1d5db",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                }}
+              />
             </div>
 
             {/* Email */}

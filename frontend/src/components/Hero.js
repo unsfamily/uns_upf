@@ -1,5 +1,5 @@
 import React from "react";
-import heroImage from "../assets/meditation.png";
+import heroImage from "../assets/gmahan.jpg";
 
 const Hero = () => {
   return (
@@ -18,98 +18,132 @@ const Hero = () => {
           style={{
             maxWidth: "80rem",
             margin: "0 auto",
-            padding: "4rem 1rem",
+            padding: "3rem 1.5rem",
             color: "white",
           }}
         >
           <div
+            className="hero-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: "2.5rem",
+              gap: "3rem",
               alignItems: "center",
             }}
           >
-            <div>
+            <div className="hero-content">
+              <div
+                style={{
+                  marginBottom: "1rem",
+                  fontSize: "0.875rem",
+                  opacity: "0.9",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                NOVEMBER 11, 2025 • PONDICHERRY, INDIA
+              </div>
               <h1
                 style={{
-                  fontSize: "2.25rem",
+                  fontSize: "2.5rem",
                   fontWeight: "800",
                   lineHeight: "1.2",
                   marginBottom: "1.5rem",
                 }}
               >
-                Join the Global Movement for Peace
+                Pledge for Global Peace
               </h1>
+              <h2
+                style={{
+                  fontSize: "1.25rem",
+                  fontWeight: "600",
+                  lineHeight: "1.4",
+                  marginBottom: "1.5rem",
+                  opacity: "0.95",
+                }}
+              >
+                JOIN MILLIONS IN A SACRED PLEDGE FOR PEACE
+              </h2>
               <p
                 style={{
-                  fontSize: "1.125rem",
+                  fontSize: "1rem",
                   lineHeight: "1.75",
                   color: "rgba(255, 255, 255, 0.9)",
                   marginBottom: "2rem",
-                  maxWidth: "36rem",
                 }}
               >
-                Led by His Holiness GuruMahan, the Universal Peace Foundation
-                invites you to be part of a worldwide pledge for harmony, unity,
-                and lasting peace.
+                On this Global Peace Day, we invite hearts and minds from every
+                corner of our world to unite in purpose. Your digital signature
+                represents more than support—it embodies hope, compassion, and
+                the collective power of humanity working toward a more peaceful
+                tomorrow. Together, we can transform our shared vision of peace
+                into reality.
               </p>
-              <a
-                href="#pledge"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  height: "3rem",
-                  padding: "0 2rem",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  color: "white",
-                  background: "linear-gradient(to right, #2563eb, #4f46e5)",
-                  borderRadius: "9999px",
-                  textDecoration: "none",
-                  transition: "all 0.3s",
-                }}
-                onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-                onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
-              >
-                Sign the Peace Pledge
-              </a>
             </div>
-            <div
-              className="relative mesh"
-              style={{
-                position: "relative",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
+
+            <div className="hero-image" style={{ textAlign: "center" }}>
+              <div
+                style={{
+                  fontSize: "0.875rem",
+                  marginBottom: "0.75rem",
+                  opacity: "0.9",
+                }}
+              >
+                Millions united for peace
+              </div>
               <img
                 src={heroImage}
-                alt="Peace"
+                alt="Guru Mahan"
                 className="shadimg"
                 style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                  borderRadius: "20px",
-                  boxShadow: "4px 4px 49px 0 #090353",
+                  width: "200px",
+                  height: "200px",
+                  objectFit: "cover",
+                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.3)",
+                  margin: "0 auto",
                 }}
               />
+              <div
+                style={{
+                  fontSize: "0.875rem",
+                  marginTop: "0.75rem",
+                  opacity: "0.9",
+                }}
+              >
+                World Peace Ambassador
+              </div>
             </div>
           </div>
         </div>
       </div>
       <style jsx>{`
-        @media (min-width: 1024px) {
-          .container > div {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
         @media (min-width: 768px) {
           h1 {
             font-size: 3rem !important;
           }
+          h2 {
+            font-size: 1.5rem !important;
+          }
           .container {
-            padding: 6rem 1rem !important;
+            padding: 5rem 2rem !important;
+          }
+          .hero-image img {
+            width: 250px !important;
+            height: 250px !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .hero-grid {
+            grid-template-columns: 1fr 400px !important;
+            gap: 4rem !important;
+          }
+          h1 {
+            font-size: 3.5rem !important;
+          }
+          h2 {
+            font-size: 1.875rem !important;
+          }
+          .hero-image {
+            text-align: center !important;
           }
         }
       `}</style>

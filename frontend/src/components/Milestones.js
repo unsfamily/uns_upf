@@ -3,24 +3,27 @@ import React from "react";
 const milestones = [
   {
     year: "1994",
-    title: "Foundation Established",
+    title: "Foundation For Global Peace",
     description:
-      "Universal Peace Foundation was founded to promote global harmony",
+      "Initiated the Peace Program and established the Universal Peace Foundation.",
   },
   {
-    year: "2005",
-    title: "UN Recognition",
-    description: "Received special consultative status with the United Nations",
+    year: "2011",
+    title: "Ambassador For Peace",
+    description:
+      "Recognized for outstanding contributions to global peace initiatives.",
   },
   {
-    year: "2015",
-    title: "Million Lives Touched",
-    description: "Peace programs reached over 1 million individuals worldwide",
+    year: "International",
+    title: "Global Recognition",
+    description:
+      "Honored abroad for fostering unity among diverse communities.",
   },
   {
     year: "2025",
-    title: "Global Peace Day",
-    description: "Launching the largest peace pledge initiative on November 11",
+    title: "Guardian Of Global Peace",
+    description:
+      "Leading the Global Peace Day celebration in Pondicherry on Nov 11, 2025.",
   },
 ];
 
@@ -36,7 +39,7 @@ const Milestones = () => {
     >
       <div
         className="container"
-        style={{ maxWidth: "80rem", margin: "0 auto", padding: "0 1rem" }}
+        style={{ maxWidth: "80rem", margin: "0 auto", padding: "0 1.5rem" }}
       >
         <h3
           style={{
@@ -44,6 +47,7 @@ const Milestones = () => {
             fontWeight: "700",
             color: "#374151",
             textAlign: "center",
+            marginBottom: "0.75rem",
           }}
         >
           A Journey of Peace Milestones & Recognition
@@ -52,7 +56,11 @@ const Milestones = () => {
           style={{
             textAlign: "center",
             color: "#4b5563",
-            marginTop: "0.5rem",
+            fontSize: "1rem",
+            lineHeight: "1.75",
+            maxWidth: "48rem",
+            margin: "0 auto",
+            marginBottom: "3rem",
           }}
         >
           Throughout his remarkable journey, His Holiness Gurumahan has received
@@ -62,21 +70,24 @@ const Milestones = () => {
 
         <div style={{ position: "relative", marginTop: "3rem" }}>
           <div
+            className="timeline-line"
             style={{
               position: "absolute",
               left: 0,
               right: 0,
               top: "1.5rem",
-              height: "1px",
+              height: "2px",
               background:
-                "linear-gradient(to right, transparent, #93c5fd, transparent)",
+                "linear-gradient(to right, transparent, #93c5fd, #3b82f6, #93c5fd, transparent)",
+              display: "none",
             }}
           ></div>
           <div
+            className="milestones-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr",
-              gap: "2.5rem",
+              gap: "2rem",
             }}
           >
             {milestones.map((milestone, index) => (
@@ -94,26 +105,29 @@ const Milestones = () => {
                 <div
                   style={{
                     position: "absolute",
-                    top: "-1rem",
+                    top: "-1.25rem",
                     left: "50%",
                     transform: "translateX(-50%)",
-                    width: "3rem",
-                    height: "3rem",
+                    minWidth: "3.5rem",
+                    height: "3.5rem",
+                    padding: "0 1rem",
                     borderRadius: "50%",
-                    background: "linear-gradient(to right, #3b82f6, #10b981)",
+                    background: "linear-gradient(135deg, #3b82f6, #10b981)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     color: "white",
                     fontWeight: "700",
-                    fontSize: "0.875rem",
+                    fontSize: "0.75rem",
+                    boxShadow: "0 4px 12px rgba(59, 130, 246, 0.4)",
+                    border: "3px solid white",
                   }}
                 >
                   {milestone.year}
                 </div>
                 <h4
                   style={{
-                    marginTop: "1rem",
+                    marginTop: "1.5rem",
                     fontSize: "1.25rem",
                     fontWeight: "700",
                     color: "#1f2937",
@@ -123,9 +137,10 @@ const Milestones = () => {
                 </h4>
                 <p
                   style={{
-                    marginTop: "0.5rem",
+                    marginTop: "0.75rem",
                     color: "#6b7280",
-                    fontSize: "0.875rem",
+                    fontSize: "0.95rem",
+                    lineHeight: "1.6",
                   }}
                 >
                   {milestone.description}
@@ -136,17 +151,24 @@ const Milestones = () => {
         </div>
       </div>
       <style jsx>{`
-        @media (min-width: 768px) {
-          .container > div > div {
-            grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 640px) {
+          .milestones-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2.5rem !important;
           }
+        }
+        @media (min-width: 768px) {
           h3 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
           }
         }
         @media (min-width: 1024px) {
-          .container > div > div {
-            grid-template-columns: repeat(4, 1fr);
+          .milestones-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 2rem !important;
+          }
+          .timeline-line {
+            display: block !important;
           }
         }
       `}</style>
