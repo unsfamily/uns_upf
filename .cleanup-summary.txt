@@ -1,0 +1,122 @@
+PROJECT CLEANUP SUMMARY
+======================
+Date: October 28, 2025
+
+FILES REMOVED (Production cleanup)
+-----------------------------------
+
+Root Directory:
+  ✓ FONT-FIX-QUICKSTART.md (temporary fix documentation)
+  ✓ PRODUCTION-FIX.md (temporary fix documentation)
+  ✓ Peace-Pledge-Certificate-Gobi-Krishnan-Arunachalam.png (test certificate)
+  ✓ .DS_Store (macOS system file)
+
+Backend Directory:
+  ✓ CHANGES.md (development documentation)
+  ✓ FONT_SETUP.md (consolidated into main docs)
+  ✓ README-FONTS.md (consolidated into main docs)
+  ✓ test-certificate.js (test script - kept install-fonts.sh)
+  ✓ test-certificate.png (test output)
+
+Frontend Directory:
+  ✓ build.zip (archive file)
+
+KEPT FOR PRODUCTION
+-------------------
+
+Documentation:
+  ✓ README.md (updated with font installation)
+  ✓ DEPLOYMENT.md (updated with font requirements)
+  ✓ PRODUCTION_CHECKLIST.md (updated with font step)
+  ✓ QUICKSTART.md (updated with font installation)
+
+Scripts:
+  ✓ setup.sh (installation script)
+  ✓ setup.bat (Windows installation script)
+  ✓ backend/install-fonts.sh (font installation - IMPORTANT!)
+
+Core Application Files:
+  ✓ All backend source files
+  ✓ All frontend source files
+  ✓ Database schema
+  ✓ Configuration files (.env.example, package.json, etc.)
+  ✓ Assets (images, logos)
+
+GITIGNORE UPDATED
+-----------------
+Added patterns to prevent future clutter:
+  - Test certificate files
+  - Build archives (*.zip)
+  - Temporary documentation
+  - .DS_Store files
+
+PRODUCTION-READY STRUCTURE
+--------------------------
+uns_upf/
+├── README.md                    # Main documentation with font setup
+├── QUICKSTART.md               # Quick start guide with font step
+├── DEPLOYMENT.md               # Deployment guide (updated)
+├── PRODUCTION_CHECKLIST.md     # Production checklist (updated)
+├── package.json
+├── setup.sh / setup.bat
+├── .gitignore (updated)
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   ├── .env.example
+│   ├── install-fonts.sh       # ⭐ IMPORTANT for production
+│   ├── admin-credentials.json
+│   ├── database/
+│   │   └── schema.sql
+│   ├── services/
+│   │   ├── certificateGenerator.js (updated with font support)
+│   │   └── emailService.js
+│   └── assets/
+│       ├── ggmahan.png
+│       └── logo_img.png
+└── frontend/
+    ├── package.json
+    ├── .env.example
+    ├── public/
+    │   ├── index.html
+    │   ├── manifest.json
+    │   └── favicon.ico
+    └── src/
+        ├── App.js
+        ├── App.css
+        ├── index.js
+        ├── index.css
+        ├── components/
+        ├── pages/
+        └── assets/
+
+CRITICAL DEPLOYMENT STEPS
+--------------------------
+1. Clone repository
+2. Run setup scripts
+3. ⭐ INSTALL FONTS: cd backend && ./install-fonts.sh
+4. Configure .env files
+5. Import database schema
+6. Build frontend
+7. Start services
+
+NEXT STEPS FOR DEPLOYMENT
+--------------------------
+1. SSH into production server
+2. Pull latest code (includes all cleanup)
+3. Run: cd backend && ./install-fonts.sh
+4. Restart application: pm2 restart all
+5. Test certificate generation
+
+NOTES
+-----
+- All temporary documentation consolidated into main docs
+- Font installation now clearly documented in multiple places
+- install-fonts.sh script retained for production use
+- Project is now lean and production-ready
+- No breaking changes - fully backward compatible
+
+For questions, refer to:
+- README.md - Complete documentation
+- DEPLOYMENT.md - Production deployment guide
+- QUICKSTART.md - Quick start instructions

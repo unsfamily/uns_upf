@@ -33,7 +33,23 @@ mysql -u root -p
 source backend/database/schema.sql
 ```
 
-### 3. Update Environment Variables
+### 3. Install System Fonts (IMPORTANT!)
+
+For certificate generation to work properly:
+
+```bash
+cd backend
+./install-fonts.sh
+cd ..
+```
+
+Or manually:
+
+- **Ubuntu/Debian**: `sudo apt-get install -y fonts-dejavu`
+- **macOS**: Fonts usually pre-installed
+- **Windows**: Fonts usually pre-installed
+
+### 4. Update Environment Variables
 
 Edit `backend/.env`:
 
@@ -45,7 +61,7 @@ DB_NAME=peace_pledge
 PORT=5000
 ```
 
-### 4. Start the Application
+### 5. Start the Application
 
 **Terminal 1 - Backend:**
 
@@ -61,7 +77,7 @@ cd frontend
 npm start
 ```
 
-### 5. Access the Application
+### 6. Access the Application
 
 Open your browser and go to: `http://localhost:3000`
 
@@ -79,6 +95,12 @@ If port 3000 or 5000 is already in use:
 - Verify MySQL is running
 - Check credentials in `backend/.env`
 - Ensure database `peace_pledge` exists
+
+### Certificate Shows Boxes Instead of Text
+
+- Run font installation: `cd backend && ./install-fonts.sh`
+- Restart the backend server
+- See DEPLOYMENT.md for more details
 
 ### Module Not Found
 

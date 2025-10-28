@@ -1,5 +1,48 @@
-const { createCanvas, loadImage } = require("canvas");
+const { createCanvas, loadImage, registerFont } = require("canvas");
 const path = require("path");
+
+// Register fonts for the canvas - use system fonts or fallbacks
+// Note: In production, you may need to install font packages or use DejaVu fonts
+try {
+  // Try to register common system fonts
+  // For Linux servers, these fonts are typically available via font packages
+  const fontsToTry = [
+    {
+      path: "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      family: "DejaVu Sans",
+      weight: "bold",
+    },
+    {
+      path: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      family: "DejaVu Sans",
+      weight: "normal",
+    },
+    {
+      path: "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+      family: "DejaVu Serif",
+      weight: "bold",
+    },
+    {
+      path: "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
+      family: "DejaVu Serif",
+      weight: "normal",
+    },
+  ];
+
+  fontsToTry.forEach((font) => {
+    try {
+      const fs = require("fs");
+      if (fs.existsSync(font.path)) {
+        registerFont(font.path, { family: font.family, weight: font.weight });
+        console.log(`✅ Registered font: ${font.family} (${font.weight})`);
+      }
+    } catch (err) {
+      // Silently continue if font registration fails
+    }
+  });
+} catch (err) {
+  console.log("⚠️ Could not register system fonts, will use canvas defaults");
+}
 
 /**
  * Generate a certificate image as a buffer
@@ -12,7 +55,7 @@ const generateCertificate = async (pledgeData) => {
     const scale = 3;
     const width = 800 * scale;
     const height = 600 * scale;
-    const canvas = createCanvas(width, height);
+    const canvas = createCanvas(width, height, "image");
     const ctx = canvas.getContext("2d");
 
     // Scale context for better quality
@@ -65,14 +108,14 @@ const generateCertificate = async (pledgeData) => {
 
     // Header text - UNIVERSAL PEACE FOUNDATION
     ctx.fillStyle = "#1e293b";
-    ctx.font = "600 10px Arial, sans-serif";
+    ctx.font = "bold 10px 'DejaVu Sans', Arial, sans-serif";
     ctx.textAlign = "center";
     ctx.letterSpacing = "0.18em";
     ctx.fillText("UNIVERSAL PEACE FOUNDATION", 400, 110);
 
     // Title - CERTIFICATE OF APPRECIATION
     ctx.fillStyle = "#0f172a";
-    ctx.font = "bold 36px Georgia, serif";
+    ctx.font = "bold 36px 'DejaVu Serif', Georgia, serif";
     ctx.letterSpacing = "0";
     ctx.fillText("CERTIFICATE OF APPRECIATION", 400, 165);
 
@@ -90,18 +133,18 @@ const generateCertificate = async (pledgeData) => {
 
     // Body text - "This certificate is proudly presented to"
     ctx.fillStyle = "#475569";
-    ctx.font = "16px Arial, sans-serif";
+    ctx.font = "16px 'DejaVu Sans', Arial, sans-serif";
     ctx.fillText("This certificate is proudly presented to", 400, 230);
 
     // Recipient name
     ctx.fillStyle = "#0f172a";
-    ctx.font = "bold 42px Georgia, serif";
+    ctx.font = "bold 42px 'DejaVu Serif', Georgia, serif";
     const fullName = `${pledgeData.firstName} ${pledgeData.lastName}`;
     ctx.fillText(fullName, 400, 280);
 
     // Appreciation text (multi-line)
     ctx.fillStyle = "#334155";
-    ctx.font = "16px Arial, sans-serif";
+    ctx.font = "16px 'DejaVu Sans', Arial, sans-serif";
     const appreciationLine1 =
       "in sincere appreciation for joining millions worldwide in the";
     const appreciationLine2 =
@@ -168,25 +211,25 @@ const generateCertificate = async (pledgeData) => {
 
     // GuruMahan name and title - left side
     ctx.fillStyle = "#475569";
-    ctx.font = "600 14px Arial, sans-serif";
+    ctx.font = "bold 14px 'DejaVu Sans', Arial, sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("His Holiness GuruMahan", 150, 560);
 
-    ctx.font = "12px Arial, sans-serif";
+    ctx.font = "12px 'DejaVu Sans', Arial, sans-serif";
     ctx.fillStyle = "#64748b";
     ctx.fillText("Global Peace Ambassador", 150, 575);
 
     // Middle section - Event details
     ctx.textAlign = "center";
-    ctx.font = "11px Arial, sans-serif";
+    ctx.font = "11px 'DejaVu Sans', Arial, sans-serif";
     ctx.fillStyle = "#64748b";
     ctx.fillText("GLOBAL PEACE DAY", 400, 470);
 
-    ctx.font = "bold 14px Arial, sans-serif";
+    ctx.font = "bold 14px 'DejaVu Sans', Arial, sans-serif";
     ctx.fillStyle = "#1e293b";
     ctx.fillText("November 11, 2025", 400, 490);
 
-    ctx.font = "13px Arial, sans-serif";
+    ctx.font = "13px 'DejaVu Sans', Arial, sans-serif";
     ctx.fillStyle = "#475569";
     ctx.fillText("Pondicherry, India", 400, 510);
 
@@ -240,7 +283,7 @@ const generateCertificate = async (pledgeData) => {
     ctx.stroke();
 
     ctx.fillStyle = "#475569";
-    ctx.font = "14px Arial, sans-serif";
+    ctx.font = "14px 'DejaVu Sans', Arial, sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("Your Signature", 650, 560);
 

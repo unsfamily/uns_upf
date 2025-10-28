@@ -95,9 +95,11 @@ uns_upf/
 ### Build & Test
 
 - [ ] Run `npm install` in root, backend, and frontend
+- [ ] **Install system fonts for certificate generation**: `cd backend && ./install-fonts.sh`
 - [ ] Test backend: `cd backend && npm start`
 - [ ] Build frontend: `cd frontend && npm run build`
 - [ ] Test production build locally
+- [ ] Test certificate generation (verify text is readable, not boxes)
 - [ ] Run all unit tests (if available)
 
 ### Performance
@@ -139,19 +141,22 @@ git clone <repository-url>
 cd uns_upf
 ./setup.sh  # or setup.bat for Windows
 
-# 2. Configure environment
+# 2. Install system fonts (IMPORTANT!)
 cd backend
+./install-fonts.sh
+
+# 3. Configure environment
 cp .env.example .env
 # Edit .env with production values
 
-# 3. Setup database
+# 4. Setup database
 mysql -u root -p < database/schema.sql
 
-# 4. Build and deploy
+# 5. Build and deploy
 cd ../frontend
 npm run build
 
-# 5. Start services
+# 6. Start services
 cd ../backend
 npm start
 ```
