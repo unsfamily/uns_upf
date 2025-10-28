@@ -16,7 +16,17 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(helmet());
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000",
+      "https://globalpeacepledge.in",
+    ],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json({ limit: "50mb" })); // Increased limit for signature images
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
