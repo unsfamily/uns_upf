@@ -34,6 +34,22 @@ logs/
 tmp/
 temp/
 
+# Test files
+test-certificate.js
+test-certificate.png
+*-test-certificate.png
+
+# Build archives
+*.zip
+build.zip
+
+# Temporary documentation (keep only production docs)
+FONT-FIX-QUICKSTART.md
+PRODUCTION-FIX.md
+CHANGES.md
+FONT_SETUP.md
+README-FONTS.md
+
 # Database
 *.sql.gz
 *.sql.bak

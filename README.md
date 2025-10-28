@@ -30,7 +30,40 @@ git clone <repository-url>
 cd uns_upf
 ```
 
-### 2. Set Up the Database
+### 2. Install System Dependencies
+
+#### For Certificate Generation (IMPORTANT!)
+
+The application generates certificates using Node.js canvas, which requires system fonts.
+
+**Ubuntu/Debian:**
+
+```bash
+sudo apt-get update
+sudo apt-get install -y fonts-dejavu fonts-dejavu-core fonts-dejavu-extra
+```
+
+**CentOS/RHEL:**
+
+```bash
+sudo yum install -y dejavu-sans-fonts dejavu-serif-fonts
+```
+
+**macOS:**
+
+```bash
+brew install fontconfig
+# Fonts are usually pre-installed on macOS
+```
+
+**Or use the automated script:**
+
+```bash
+cd backend
+./install-fonts.sh
+```
+
+### 3. Set Up the Database
 
 ```bash
 # Log in to MySQL
@@ -42,7 +75,7 @@ source backend/database/schema.sql
 # Or manually create the database and table
 ```
 
-### 3. Set Up the Backend
+### 4. Set Up the Backend
 
 ```bash
 cd backend
@@ -69,7 +102,7 @@ npm run dev
 
 The backend server will start on `http://localhost:5000`
 
-### 4. Set Up the Frontend
+### 5. Set Up the Frontend
 
 ```bash
 cd ../frontend

@@ -32,7 +32,7 @@ const AdminDashboard = () => {
   const fetchPledgeCount = async (token) => {
     try {
       const response = await fetch(
-        "http://localhost:5001/api/admin/pledges/count",
+        `${process.env.REACT_APP_API_URL}/api/admin/pledges/count`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -58,11 +58,14 @@ const AdminDashboard = () => {
 
   const fetchPledges = async (token) => {
     try {
-      const response = await fetch("http://localhost:5001/api/admin/pledges", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/admin/pledges`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -96,7 +99,7 @@ const AdminDashboard = () => {
       }
 
       const response = await fetch(
-        "http://localhost:5001/api/admin/pledges/export",
+        `${process.env.REACT_APP_API_URL}/api/admin/pledges/export`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -160,7 +163,7 @@ const AdminDashboard = () => {
       }
 
       const response = await fetch(
-        "http://localhost:5001/api/admin/change-password",
+        `${process.env.REACT_APP_API_URL}/api/admin/change-password`,
         {
           method: "POST",
           headers: {

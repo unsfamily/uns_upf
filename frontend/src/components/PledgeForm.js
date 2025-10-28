@@ -254,8 +254,15 @@ const PledgeForm = ({ onPledgeSubmit }) => {
     setIsSubmitting(true);
 
     try {
-      const submitData = { ...formData, signature };
-      const response = await axios.post("/api/pledge", submitData);
+      const submitData = {
+        ...formData,
+        signature,
+      };
+
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/pledge`,
+        submitData
+      );
 
       if (response.data.success) {
         setMessage({

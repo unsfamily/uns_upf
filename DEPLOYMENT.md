@@ -37,6 +37,9 @@ sudo apt install -y nodejs
 sudo apt install mysql-server -y
 sudo mysql_secure_installation
 
+# Install fonts required for certificate generation (IMPORTANT!)
+sudo apt install -y fonts-dejavu fonts-dejavu-core fonts-dejavu-extra
+
 # Install PM2 for process management
 sudo npm install -g pm2
 
@@ -256,6 +259,9 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install fonts for certificate generation
+RUN apk add --no-cache ttf-dejavu
+
 COPY package*.json ./
 RUN npm ci --only=production
 
@@ -361,10 +367,12 @@ docker-compose up -d
 ## Pre-Deployment Checklist
 
 - [ ] All dependencies installed
+- [ ] **System fonts installed (DejaVu fonts for certificate generation)**
 - [ ] Environment variables configured
 - [ ] Database schema imported
 - [ ] Frontend built and tested
 - [ ] API endpoints tested
+- [ ] Certificate generation tested with various names
 - [ ] CORS configured correctly
 - [ ] SSL certificates installed
 - [ ] Firewall configured
