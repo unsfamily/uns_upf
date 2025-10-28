@@ -12,6 +12,25 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Global Peace Pledge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            container: { center: true, padding: '1rem' },
+            fontFamily: { display: ["ui-sans-serif", "system-ui", "Inter", "sans-serif"] },
+            keyframes: {
+              float: {
+                '0%,100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' }
+              },
+              spinSlow: { '0%': { transform: 'rotate(0)' }, '100%': { transform: 'rotate(360deg)' } },
+            },
+            animation: { float: 'float 6s ease-in-out infinite', 'spin-slow': 'spinSlow 6s linear infinite' },
+          },
+        },
+      };
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

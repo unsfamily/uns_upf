@@ -3,66 +3,36 @@ import logo from "../assets/logo.png";
 
 const Header = () => {
   return (
-    <header
-      className="sticky top-0 z-40 backdrop-blur bg-white/70"
-      style={{ backdropFilter: "blur(10px)" }}
-    >
-      <div
-        className="container flex items-center justify-between py-4"
-        style={{
-          maxWidth: "80rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "1rem",
-        }}
-      >
-        <a
-          href="#"
-          className="flex items-center gap-3"
-          style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}
-        >
-          <img src={logo} alt="UPF Logo" style={{ width: "60%" }} />
-        </a>
-        <nav
-          className="hidden md:flex items-center gap-8 text-sm"
-          style={{ display: "none", gap: "2rem", fontSize: "0.875rem" }}
-        >
-          <a
-            className="hover:text-blue-900"
-            href="#about"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            About
-          </a>
-          <a
-            className="hover:text-blue-900"
-            href="#milestones"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            Milestones
-          </a>
-          <a
-            className="hover:text-blue-900"
-            href="#pledge"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            Pledge
-          </a>
-        </nav>
-      </div>
-      <style jsx>{`
-        @media (min-width: 768px) {
-          nav {
-            display: flex !important;
-            align-items: center;
-          }
-        }
-        a:hover {
-          color: #1e3a8a;
-        }
-      `}</style>
-    </header>
+
+
+<header className="sticky top-0 z-40 backdrop-blur bg-white/70">
+<div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4">
+  <a href="#" className="flex items-center gap-3" aria-label="Home">
+    <img src={logo} alt="UPF Logo" style={{ width: "50%" }} />
+  {/* <span className="font-semibold tracking-tight text-blue-900">Universal Peace Foundation</span> */}
+  </a>
+  <nav className="hidden md:flex items-center gap-8 text-sm" aria-label="Primary">
+    <a className="hover:text-blue-900 transition-colors" href="#about">
+    About
+    </a>
+    <a className="hover:text-blue-900 transition-colors" href="#milestones">
+    Milestones
+    </a>
+    <a className="hover:text-blue-900 transition-colors" href="#pledge">
+    Pledge
+    </a>
+  </nav>
+
+{/*
+<a
+href="#pledge"
+className="hidden sm:inline-flex h-10 items-center rounded-full px-5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+>
+Sign the Pledge
+</a>
+*/}
+</div>
+</header>
   );
 };
 

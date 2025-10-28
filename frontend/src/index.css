@@ -27,6 +27,20 @@ code {
   padding: 0 1rem;
 }
 
+.imgdn{
+  border-radius: 20px;
+  box-shadow: 10px 3px 50px 2px #a3c4d8;
+}
+
+/* .bg_mask {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+} */
+
 @media (min-width: 640px) {
   .container {
     padding: 0 1.5rem;

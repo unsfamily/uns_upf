@@ -99,20 +99,17 @@
 
 /* Background mask */
 .bg_mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
 }
 
 .bg_mask img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.1;
+  max-width: 100%;
+  display: inline-block;
 }
 
 /* Smooth scroll */

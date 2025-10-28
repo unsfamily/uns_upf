@@ -29,13 +29,7 @@ const HomePage = () => {
 
   return (
     <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom, #ffffff, #eff6ff, #ffffff)",
-        color: "#1f2937",
-        fontFamily:
-          'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      }}
+      className="min-h-screen text-gray-800 font-sans bg-gradient-to-b from-white via-blue-50 to-white"
     >
       <Header />
       <Hero />
@@ -50,11 +44,7 @@ const HomePage = () => {
       {pledgeData && (
         <div
           id="certificateButtons"
-          style={{
-            textAlign: "center",
-            marginTop: "2rem",
-            marginBottom: "3rem",
-          }}
+          className="text-center mt-8 mb-12"
         >
           <CertificateGenerator pledgeData={pledgeData} />
         </div>

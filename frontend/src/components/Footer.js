@@ -5,21 +5,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer
-      style={{
-        padding: "3rem 1rem",
-        textAlign: "center",
-        background: "linear-gradient(to bottom, #f9fafb, #ffffff)",
-        borderTop: "1px solid #e5e7eb",
-      }}
-    >
-      <div
+    <footer className="py-10 text-center text-sm text-gray-600">
+
+     <div>© 2025 Global Peace Pledge</div>
+      {/* <div
         style={{
           maxWidth: "80rem",
           margin: "0 auto",
         }}
-      >
-        <div style={{ marginBottom: "2rem" }}>
+      > */}
+        {/* <div style={{ marginBottom: "2rem" }}>
           <img
             src={logoImg}
             alt="Universal Peace Foundation"
@@ -112,7 +107,7 @@ const Footer = () => {
         >
           © {currentYear} Global Peace Pledge
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

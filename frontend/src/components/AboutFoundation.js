@@ -3,128 +3,45 @@ import meditationImg from "../assets/meditation.png";
 
 const AboutFoundation = () => {
   return (
-    <section
-      style={{
-        padding: "3rem 1rem",
-        background:
-          "linear-gradient(to bottom, #ffffff, rgba(239, 246, 255, 0.5))",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "80rem",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          className="foundation-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "3rem",
-            alignItems: "start",
-          }}
-        >
-          <div className="foundation-content">
-            <h2
-              style={{
-                fontSize: "2.25rem",
-                fontWeight: "700",
-                color: "#374151",
-                marginBottom: "1rem",
-              }}
-            >
-              About the Universal Peace Foundation
-            </h2>
+    <section id="about" className="container max-w-7xl py-10 md:py-10">
+      <div className="grid lg:grid-cols-12 gap-10 items-center">
+        <div className="lg:col-span-8">
+          <h2 className="text-3xl md:text-4xl font-bold inline bg-gradient-to-r from-blue-300 to-green-600 bg-clip-text text-transparent my-4">
+            About the Universal Peace Foundation
+          </h2>
 
-            <h3
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "600",
-                color: "#1e3a8a",
-                marginTop: "2rem",
-                marginBottom: "0.75rem",
-              }}
-            >
-              OUR MISSION
-            </h3>
-            <p
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: "1.75",
-                color: "#374151",
-              }}
-            >
-              Under the guidance of His Holiness Gurumahan, the Universal Peace
-              Foundation is dedicated to fostering global harmony through
-              education, spiritual practices, dialogue, and compassionate
-              action. We believe that lasting peace begins within each
-              individual and expands outward to communities, nations, and the
-              world.
-            </p>
-
-            <h3
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "600",
-                color: "#1e3a8a",
-                marginTop: "2rem",
-                marginBottom: "0.75rem",
-              }}
-            >
-              GLOBAL PEACE DAY 2025
-            </h3>
-            <p
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: "1.75",
-                color: "#374151",
-              }}
-            >
-              The historic Global Peace Day celebration in Pondicherry on
-              November 11, 2025, represents the culmination of decades of peace
-              work. With official backing from Indian state and central
-              governments, this event will unite millions of hearts in prayer
-              and pledge for world peace.
-            </p>
+          <div className="text-2xl mt-5  leading-relaxed text-blue-900 font-semibold max-w-2xl">
+            Our Mission
           </div>
+          <p className="mt-5 text-lg leading-relaxed text-gray-700 max-w-2xl">
+            Under the guidance of His Holiness Gurumahan, the Universal Peace
+            Foundation is dedicated to fostering global harmony through
+            education, spiritual practices, dialogue, and compassionate action.
+            We believe that lasting peace begins within each individual and
+            expands outward to communities, nations, and the world.
+          </p>
 
-          <div className="foundation-image" style={{ textAlign: "center" }}>
-            <img
-              src={meditationImg}
-              alt="Meditation for Peace"
-              style={{
-                width: "100%",
-                maxWidth: "450px",
-                height: "auto",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
-                display: "block",
-                margin: "0 auto",
-              }}
-            />
+          <div className="text-2xl mt-5  leading-relaxed text-blue-900 font-semibold max-w-2xl">
+            Global Peace Day 2025
           </div>
+          <p className="mt-5 text-lg leading-relaxed text-gray-700 max-w-2xl">
+            The historic Global Peace Day celebration in Pondicherry on November
+            11, 2025, represents the culmination of decades of peace work. With
+            official backing from Indian state and central governments, this
+            event will unite millions of hearts in prayer and pledge for world
+            peace.
+          </p>
+        </div>
+
+        <div className="lg:col-span-4 mx-auto relative">
+          <img
+            src={meditationImg}
+            alt="Gurumahan portrait"
+            className="h-56 w-56 md:h-80 md:w-80 object-cover mx-auto lg:mx-0 shadow-yellow-50 imgdn"
+          />
+          <div className="absolute -z-10 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-blue-200/40 blur-2xl animate-float"></div>
         </div>
       </div>
-      <style jsx>{`
-        @media (min-width: 768px) {
-          h2 {
-            font-size: 2.5rem !important;
-          }
-        }
-        @media (min-width: 1024px) {
-          .foundation-grid {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 4rem !important;
-            align-items: center !important;
-          }
-          .foundation-image {
-            order: 2;
-          }
-          .foundation-content {
-            order: 1;
-          }
-        }
-      `}</style>
     </section>
   );
 };

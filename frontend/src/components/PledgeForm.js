@@ -227,27 +227,18 @@ const PledgeForm = ({ onPledgeSubmit }) => {
     const { firstName, lastName, email, country } = formData;
 
     if (!firstName || !lastName || !email || !country) {
-      setMessage({
-        text: "Please fill in all required fields.",
-        type: "error",
-      });
+      setMessage({ text: "Please fill in all required fields.", type: "error" });
       return false;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setMessage({
-        text: "Please enter a valid email address.",
-        type: "error",
-      });
+      setMessage({ text: "Please enter a valid email address.", type: "error" });
       return false;
     }
 
     if (!signature) {
-      setMessage({
-        text: "Please provide your digital signature.",
-        type: "error",
-      });
+      setMessage({ text: "Please provide your digital signature.", type: "error" });
       return false;
     }
 
@@ -258,18 +249,12 @@ const PledgeForm = ({ onPledgeSubmit }) => {
     e.preventDefault();
     setMessage({ text: "", type: "" });
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
-      const submitData = {
-        ...formData,
-        signature,
-      };
-
+      const submitData = { ...formData, signature };
       const response = await axios.post("/api/pledge", submitData);
 
       if (response.data.success) {
@@ -278,41 +263,22 @@ const PledgeForm = ({ onPledgeSubmit }) => {
           type: "success",
         });
 
-        // Pass data to parent component for certificate generation
-        if (onPledgeSubmit) {
-          onPledgeSubmit(submitData);
-        }
+        if (onPledgeSubmit) onPledgeSubmit(submitData);
 
-        // Reset form
-        setFormData({
-          firstName: "",
-          lastName: "",
-          mobile: "",
-          email: "",
-          country: "",
-          address: "",
-        });
+        setFormData({ firstName: "", lastName: "", mobile: "", email: "", country: "", address: "" });
         setClearSignature(true);
       } else {
-        setMessage({
-          text: response.data.message || "An error occurred.",
-          type: "error",
-        });
+        setMessage({ text: response.data.message || "An error occurred.", type: "error" });
       }
     } catch (error) {
       console.error("Form submission error:", error);
       let errorMessage =
         "Sorry, there was a connection error. Please check your internet connection and try again.";
-
       if (error.message.includes("Network Error")) {
-        errorMessage =
-          "Cannot connect to server. Please check if the server is running and try again.";
+        errorMessage = "Cannot connect to server. Please check if the server is running and try again.";
       } else if (error.response) {
-        errorMessage =
-          error.response.data.message ||
-          "Server error occurred. Please try again.";
+        errorMessage = error.response.data.message || "Server error occurred. Please try again.";
       }
-
       setMessage({ text: errorMessage, type: "error" });
     } finally {
       setIsSubmitting(false);
@@ -320,90 +286,28 @@ const PledgeForm = ({ onPledgeSubmit }) => {
   };
 
   return (
-    <section
-      id="pledge"
-      style={{
-        marginBottom: "4rem",
-        padding: "2.5rem 1rem",
-        position: "relative",
-      }}
-    >
+    <section id="pledge" className="relative mb-16 px-4 py-10">
       <div className="bg_mask">
         <img src={bg1Img} alt="" />
       </div>
-      <div
-        style={{
-          maxWidth: "48rem",
-          margin: "0 auto",
-          borderRadius: "0.75rem",
-          border: "1px solid #bfdbfe",
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-          position: "relative",
-        }}
-      >
+
+      <div className="mx-auto max-w-3xl rounded-xl border border-blue-200 bg-white bg-opacity-50 shadow-xl relative">
         {/* Card Header */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0.5rem",
-            borderRadius: "0.75rem 0.75rem 0 0",
-            background: "linear-gradient(to right, #3b82f6, #1e3a8a)",
-            padding: "2rem",
-            textAlign: "center",
-            color: "white",
-          }}
-        >
-          <div
-            style={{
-              marginBottom: "0.25rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <h1 style={{ fontSize: "1.875rem", fontWeight: "700" }}>
-              Sign Your Peace Pledge
-            </h1>
+        <div className="flex flex-col items-center gap-2 rounded-t-xl bg-gradient-to-r from-blue-500 to-blue-900 p-8 text-center text-white">
+          <div className="mb-1 flex items-center justify-center gap-3">
+            <h1 className="text-3xl font-bold">Sign Your Peace Pledge</h1>
           </div>
-          <p style={{ fontSize: "1.125rem", color: "#bfdbfe" }}>
-            Add your voice to the global movement for peace
-          </p>
+          <p className="text-lg text-blue-200">Add your voice to the global movement for peace</p>
         </div>
 
         {/* Card Body */}
-        <div style={{ padding: "2rem" }}>
-          <form
-            onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
-          >
+        <div className="p-6 sm:p-8">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Name Grid */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr",
-                gap: "1.5rem",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                }}
-              >
-                <label
-                  htmlFor="firstName"
-                  style={{
-                    fontSize: "0.875rem",
-                    fontWeight: "600",
-                    color: "#374151",
-                  }}
-                >
-                  First Name <span style={{ color: "#dc2626" }}>*</span>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="firstName" className="text-sm font-semibold text-gray-700">
+                  First Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -412,31 +316,13 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                   value={formData.firstName}
                   onChange={handleChange}
                   required
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "0.5rem",
-                    fontSize: "1rem",
-                  }}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                }}
-              >
-                <label
-                  htmlFor="lastName"
-                  style={{
-                    fontSize: "0.875rem",
-                    fontWeight: "600",
-                    color: "#374151",
-                  }}
-                >
-                  Last Name <span style={{ color: "#dc2626" }}>*</span>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="lastName" className="text-sm font-semibold text-gray-700">
+                  Last Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   type="text"
@@ -445,37 +331,15 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                   value={formData.lastName}
                   onChange={handleChange}
                   required
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "0.5rem",
-                    fontSize: "1rem",
-                  }}
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
 
             {/* Mobile Number (Optional) */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <label
-                htmlFor="mobile"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  color: "#374151",
-                }}
-              >
-                Mobile Number{" "}
-                <span style={{ color: "#6b7280", fontWeight: "400" }}>
-                  (Optional)
-                </span>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="mobile" className="text-sm font-semibold text-gray-700">
+                Mobile Number <span className="font-normal text-gray-500">(Optional)</span>
               </label>
               <input
                 type="tel"
@@ -484,33 +348,14 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                 value={formData.mobile}
                 onChange={handleChange}
                 placeholder="Enter your mobile number"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "1px solid #d1d5db",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Email */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <label
-                htmlFor="email"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  color: "#374151",
-                }}
-              >
-                Email Address <span style={{ color: "#dc2626" }}>*</span>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="email" className="text-sm font-semibold text-gray-700">
+                Email Address <span className="text-red-600">*</span>
               </label>
               <input
                 type="email"
@@ -519,33 +364,14 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "1px solid #d1d5db",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Country */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <label
-                htmlFor="country"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  color: "#374151",
-                }}
-              >
-                Country <span style={{ color: "#dc2626" }}>*</span>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="country" className="text-sm font-semibold text-gray-700">
+                Country <span className="text-red-600">*</span>
               </label>
               <select
                 id="country"
@@ -553,13 +379,7 @@ const PledgeForm = ({ onPledgeSubmit }) => {
                 value={formData.country}
                 onChange={handleChange}
                 required
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "1px solid #d1d5db",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Select your country</option>
                 {countries.map((country) => (
@@ -571,87 +391,40 @@ const PledgeForm = ({ onPledgeSubmit }) => {
             </div>
 
             {/* Address (Optional) */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <label
-                htmlFor="address"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  color: "#374151",
-                }}
-              >
-                Address{" "}
-                <span style={{ color: "#6b7280", fontWeight: "400" }}>
-                  (Optional)
-                </span>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="address" className="text-sm font-semibold text-gray-700">
+                Address <span className="font-normal text-gray-500">(Optional)</span>
               </label>
               <textarea
                 id="address"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                rows="3"
+                rows={3}
                 placeholder="Enter your address"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "1px solid #d1d5db",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                  resize: "vertical",
-                }}
+                className="w-full resize-y rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Signature Pad */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <label
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "600",
-                  color: "#374151",
-                }}
-              >
-                Your Digital Signature{" "}
-                <span style={{ color: "#dc2626" }}>*</span>
+            <div className="flex flex-col gap-2">
+              <label className="text-sm font-semibold text-gray-700">
+                Your Digital Signature <span className="text-red-600">*</span>
               </label>
-              <SignaturePad
-                onSignatureChange={handleSignatureChange}
-                clearTrigger={clearSignature}
-              />
+              <SignaturePad onSignatureChange={handleSignatureChange} clearTrigger={clearSignature} />
             </div>
 
             {/* Submit */}
-            <div style={{ paddingTop: "0.5rem" }}>
+            <div className="pt-2">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                style={{
-                  width: "100%",
-                  padding: "1rem",
-                  fontSize: "1rem",
-                  fontWeight: "600",
-                  color: "white",
-                  background: isSubmitting
-                    ? "#9ca3af"
-                    : "linear-gradient(to right, #3b82f6, #1e3a8a)",
-                  border: "none",
-                  borderRadius: "0.5rem",
-                  cursor: isSubmitting ? "not-allowed" : "pointer",
-                  transition: "all 0.3s",
-                }}
+                className={
+                  `w-full rounded-lg px-4 py-4 text-center text-base font-semibold text-white transition-all ` +
+                  (isSubmitting
+                    ? "cursor-not-allowed bg-gray-400"
+                    : "bg-gradient-to-r from-blue-500 to-blue-900 hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-blue-500")
+                }
               >
                 {isSubmitting ? "Submitting..." : "Submit My Peace Pledge"}
               </button>
@@ -660,18 +433,14 @@ const PledgeForm = ({ onPledgeSubmit }) => {
             {/* Message Display */}
             {message.text && (
               <div
-                style={{
-                  marginTop: "1rem",
-                  padding: "1rem",
-                  borderRadius: "0.5rem",
-                  textAlign: "center",
-                  backgroundColor:
-                    message.type === "success" ? "#f0fdf4" : "#fef2f2",
-                  color: message.type === "success" ? "#166534" : "#991b1b",
-                  border: `1px solid ${
-                    message.type === "success" ? "#bbf7d0" : "#fecaca"
-                  }`,
-                }}
+                role="status"
+                aria-live="polite"
+                className={
+                  `mt-4 rounded-lg border p-4 text-center ` +
+                  (message.type === "success"
+                    ? "border-green-200 bg-green-50 text-green-800"
+                    : "border-red-200 bg-red-50 text-red-800")
+                }
               >
                 {message.text}
               </div>
@@ -679,18 +448,6 @@ const PledgeForm = ({ onPledgeSubmit }) => {
           </form>
         </div>
       </div>
-      <style jsx>{`
-        @media (min-width: 768px) {
-          form > div:first-child {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        @media (min-width: 640px) {
-          section > div > div:last-child {
-            padding: 2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 };
