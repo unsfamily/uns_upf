@@ -5,21 +5,22 @@ const About = () => {
   return (
 
 
-<section id="about" className="container max-w-7xl py-10 md:py-10">
+<section id="about" className="container max-w-7xl py-10 md:py-10 mt-4">
       <div className="grid lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-4 mx-auto relative">
+        <div className="lg:col-span-4 mx-auto relative mt-4">
           <img
             src={gmahanImg}
             alt="Gurumahan portrait"
             className="h-56 w-56 md:h-64 md:w-64 rounded-full object-cover mx-auto lg:mx-0"
           />
           <div class="absolute -z-10 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-blue-200/40 blur-2xl animate-float z-10"></div>
-          <p className="lg:text-center mt-3 text-sm text-gray-500 italic">
+          <p className="text-center mt-3 text-sm text-gray-500 italic">
             World Peace Ambassador
           </p>
         </div>
 
         <div className="lg:col-span-8 my-4">
+          <div className="header-center">
           <h2 className="text-3xl md:text-4xl font-bold inline bg-gradient-to-r from-blue-300 to-green-600 bg-clip-text text-transparent my-4">
             About His Holiness Gurumahan
           </h2>
@@ -27,6 +28,7 @@ const About = () => {
           <p className="text-blue-900 font-semibold mt-4">
             Global Peace Ambassador of the Universal Peace Foundation
           </p>
+          </div>
 
           <p className="mt-5 text-lg leading-relaxed text-gray-700 max-w-2xl">
             His Holiness GuruMahan is a distinguished spiritual leader and visionary who has dedicated his life to fostering global harmony and peace. Since 1992, he has been leading transformative Peace Programs that have touched millions of lives across the world through the Universal Peace Foundation.

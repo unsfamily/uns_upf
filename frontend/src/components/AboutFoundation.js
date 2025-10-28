@@ -6,12 +6,14 @@ const AboutFoundation = () => {
     <section id="about" className="container max-w-7xl py-10 md:py-10">
       <div className="grid lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-8">
+          <div className="header-center">
           <h2 className="text-3xl md:text-4xl font-bold inline bg-gradient-to-r from-blue-300 to-green-600 bg-clip-text text-transparent my-4">
             About the Universal Peace Foundation
           </h2>
 
           <div className="text-2xl mt-5  leading-relaxed text-blue-900 font-semibold max-w-2xl">
             Our Mission
+          </div>
           </div>
           <p className="mt-5 text-lg leading-relaxed text-gray-700 max-w-2xl">
             Under the guidance of His Holiness Gurumahan, the Universal Peace
@@ -20,9 +22,10 @@ const AboutFoundation = () => {
             We believe that lasting peace begins within each individual and
             expands outward to communities, nations, and the world.
           </p>
-
+<div className="header-center">
           <div className="text-2xl mt-5  leading-relaxed text-blue-900 font-semibold max-w-2xl">
             Global Peace Day 2025
+          </div>
           </div>
           <p className="mt-5 text-lg leading-relaxed text-gray-700 max-w-2xl">
             The historic Global Peace Day celebration in Pondicherry on November

@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="bg-gradient-to-br from-indigo-900 via-blue-800 to-violet-600">
         <div className="grid lg:grid-cols-2 gap-10 items-center container max-w-7xl py-16 md:py-24 lg:py-10 text-white">
           <div>
-            <p className="uppercase tracking-widest text-white/100 text-xs md:text-sm">
+            <p className="uppercase tracking-widest text-white/100 text-xs md:text-sm mt-4">
               November 11, 2025 • Pondicherry, India
             </p>
             <h1 className="mt-3 text-4xl md:text-5xl font-extrabold leading-tight">

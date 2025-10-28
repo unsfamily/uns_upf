@@ -491,7 +491,9 @@ html {
     flex-direction: column;
     gap: 20px;
   }
-
+.header-center{
+  text-align: center;
+}
   .dashboard-actions {
     width: 100%;
     flex-direction: column;
