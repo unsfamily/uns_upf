@@ -240,7 +240,8 @@ const CertificatePreview = ({ firstName, lastName }) => {
                     Pondicherry, India
                   </p>
                   <p style={{ fontSize: "0.75rem", color: "#64748b" }}>
-                    With support from State & Central Governments of India
+                    With The Support of States and the Central Government of
+                    India
                   </p>
                 </div>
               </div>
